@@ -28,6 +28,8 @@ console.log(field);
 for(let x = 0; x < field.length; x++){
     for(let y = 0; y < field[x].length; y++){
         if(Math.random() > 0.9){
+            //let icon = document.createElement('i');
+            //field[x][y].appendChild(icon);
         field[x][y].style.background = '#da1e1e';
         field[x][y].style.borderRadius = '50%';
         }
