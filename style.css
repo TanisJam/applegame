@@ -11,7 +11,7 @@ body{
 }
 #container{
     width: 100%;
-    background-color: darkgoldenrod;
+    background-color: #ffe139;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,26 +23,29 @@ body{
     text-align: center;
 }
 
-#tablero{
-    background-color: burlywood;
+#board{
+    background-color: #e7d3b6;
     width: 100%;
     margin: 0.5em;
-    padding: 0.5em;
+    padding-top: 0.5em;
     display: flex;
     flex-direction: column;
 }
 
-#tablero *{
-    width: auto;
+#board *{
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-#tablero * *{
-    background-color: darkgreen;
+
+
+#board * *{
+    background-color: #a7d82e;
     width: 1.5em;
     height: 1.5em;
-    margin: 0.09em;
+    /*margin: 0.09em;*/
+    z-index: 1;
 }
