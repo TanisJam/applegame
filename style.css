@@ -1,0 +1,48 @@
+html{
+    margin: 0;
+    padding: 0;
+    
+    font-family: sans-serif;
+}
+body{
+    background-color: antiquewhite;
+    width: 100%;
+    margin: 0;
+}
+#container{
+    width: 100%;
+    background-color: darkgoldenrod;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#title{
+    color: black;
+    text-align: center;
+}
+
+#tablero{
+    background-color: burlywood;
+    width: 100%;
+    margin: 0.5em;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+#tablero *{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#tablero * *{
+    background-color: darkgreen;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.09em;
+}
