@@ -11,20 +11,20 @@ body{
 }
 #container{
     width: 100%;
-    background-color: #ffe139;
+    background-color: #CC0000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#title{
-    color: black;
+#tittle{
+    color: white;
     text-align: center;
 }
 
 #board{
-    background-color: #e7d3b6;
+    background-color: #F4FF70;
     width: 100%;
     margin: 0.5em;
     padding-top: 0.5em;
@@ -43,7 +43,7 @@ body{
 
 
 #board * *{
-    background-color: #a7d82e;
+    background-color: #f9ffb5;
     width: 1.5em;
     height: 1.5em;
     /*margin: 0.09em;*/

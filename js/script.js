@@ -1,7 +1,12 @@
+"use strict";
+
+import { Board } from './board.js';
 
 const width = 15;
 const height = 15;
+const treeColor = '#75972C';
 
+//not used
 let createBoard = function (width, height, element) {
     //create nested divs
     for (let x = 0; x < height; x++) {
@@ -23,8 +28,9 @@ let createBoard = function (width, height, element) {
     //return it
     return field;
 }
-
+//not used
 let populate = function(array, probability){
+    let population = 0;
     //probability 0.0 - 1.0
     for (let x = 0; x < array.length; x++) {
         for (let y = 0; y < array[x].length; y++) {
@@ -36,14 +42,28 @@ let populate = function(array, probability){
                 let icon = document.createElement('i');
                 icon.classList.add("fas");
                 icon.classList.add("fa-tree");
-                icon.style.color = 'green';
+                icon.style.color = treeColor;
                 array[x][y].appendChild(icon);
+                population++;
             }
         }
     }
+    return population;
 }
 
-//create board, a matrix with all the divs
-let board = createBoard(width, height, document.getElementById("board"));
 
-populate(board, 0.05);
+//create board, a matrix with all the divs
+let board = new Board(width, height, document.getElementById("board"));
+console.log(board.population);
+
+board.populate(0.05, treeColor);
+console.log(board.population);
+
+let count = document.createElement('p');
+count.innerHTML = "Total trees: " + board.population;
+count.style.backgroundColor = '#A87C4F';
+count.style.padding = '1em';
+count.style.borderRadius = '10%';
+document.getElementById("container").appendChild(count);
+//let board = createBoard(width, height, document.getElementById("board"));
+//populate(board.field, 0.05);
