@@ -4,22 +4,28 @@ class Board{
         this.width = width;
         this.height = height;
         this.population = 0;
-        this.field = []; 
+        this.field = this.createField(element);            
+    }
+    createField(element){
+        let field = [];
+        let index = 1;
         for (let x = 0; x < this.height; x++) {
             let row = document.createElement('div');
-            row.id = "row-" + (x + 1);
-    
+            //row.id = "row-" + (x + 1);
+
             for (let y = 0; y < this.width; y++) {
                 let col = document.createElement('div');
-                col.id = "col-" + (y + 1);
+                col.id = "cell-" + index++;
                 row.appendChild(col);
             }
             element.appendChild(row);
         }
         for (let i = 0; i < this.height; i++) {
-            this.field.push(element.childNodes[i].childNodes)
-        }     
+            field.push(element.childNodes[i].childNodes)
+        }
+        return field;
     }
+
     populate(probability, treeColor){
         //probability 0.0 - 1.0
         for (let x = 0; x < this.field.length; x++) {
@@ -35,10 +41,29 @@ class Board{
                     icon.classList.add("fa-tree");
                     icon.style.color = treeColor;
                     this.field[x][y].appendChild(icon);
+                    //console.log(this.field[x][y]);
                 }
             }
         }
     }
-}
 
-export { Board };
+    plant(number, color){
+        let place = document.getElementById("cell-"+number);
+        if(place){
+            let icon = document.createElement('i');
+            icon.classList.add("fas");
+            icon.classList.add("fa-tree");
+            icon.style.color = color;
+            place.appendChild(icon);
+            this.population++;
+        }
+    }
+    clean(number){
+        let place = document.getElementById("cell-"+number);
+        if(place){            
+            place.removeChild(place.firstChild);
+            this.population--;
+        }
+    }
+
+}

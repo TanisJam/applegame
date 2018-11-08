@@ -16,22 +16,26 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 20%;
+    box-shadow: 0px 0px 50px 1px rgb(117, 10, 10) inset;
 }
 
 #tittle{
+    padding-top: 0.5em;
     color: white;
-    text-align: center;
+    height: 1.5em;
 }
 
 #board{
     background-color: #F4FF70;
     width: 100%;
     margin: 0.5em;
-    padding-top: 0.5em;
+    padding-top: 0.3em;
+    padding-bottom: 0.4em;
     display: flex;
     flex-direction: column;
+    box-shadow: 0.1px 0.1px 10px 1px rgb(180, 189, 83) inset;
 }
-
 #board *{
     width: 100%;
     height: auto;
@@ -39,12 +43,19 @@ body{
     flex-direction: row;
     justify-content: center;
 }
-
-
-
 #board * *{
     background-color: #f9ffb5;
     width: 1.5em;
     height: 1.5em;
     /*margin: 0.09em;*/
+}
+
+#total-trees{
+    padding: 1em;
+    background-color: #A87C4F;
+    border-radius: 8%;
+    box-shadow: 0px 0px 10px 1px rgb(121, 85, 50); 
+}
+#btn-reload{
+    margin: 0.5em;
 }

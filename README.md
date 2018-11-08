@@ -1,5 +1,5 @@
 # Applegame
-### A simple game about growing and selling apples.
+## A simple game about growing and selling apples.
 
 Like a game of life, but whit apple trees.
 
