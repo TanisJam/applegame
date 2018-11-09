@@ -4,44 +4,50 @@ const width = 15;
 const height = 15;
 const treeColor = '#75972C';
 
+var config = {
+    apiKey: "AIzaSyCAEoFj3jOjaFkcTbEwklY9dG3Pu3YDyUk",
+    authDomain: "apple-trees.firebaseapp.com",
+    databaseURL: "https://apple-trees.firebaseio.com",
+    projectId: "apple-trees",
+    storageBucket: "apple-trees.appspot.com",
+    messagingSenderId: "334685750082"
+  };
+firebase.initializeApp(config);
+let database = firebase.database();
+let ref = database.ref("fields");
+
 let trees = [];
 let div = document.getElementById("board");
 let treesCount = document.getElementById("total-trees");
-let btnReload = document.getElementById("btn-reload");
+let btnClean = document.getElementById("btn-clean");
+let btnSave = document.getElementById("btn-save");
+let inputName = document.getElementById("input-name");
 
-let plant = function(number, color){
-    trees.forEach((x) => board.clean(x));
-    trees = [];
-    while(trees.length < number){
-        let randomNumber = Math.floor( (Math.random() * (width*height))+1 );
-        if(trees.indexOf(randomNumber) == -1){
-            trees.push(randomNumber);
-        }
-    }
-    trees.forEach((x) => board.plant(x, color));
+let showTotalTrees = function(){
     treesCount.innerHTML = "Total trees: " + board.population;
 }
 
+let cliked = function(algo){
+    let exp = /[0-9]+/g;
+    let cell = (!exp.test(algo.path[0].id))?algo.path[1].id:algo.path[0].id;
+    board.plant(cell);
+    showTotalTrees();
+    console.log(board.planted);
+}
 
 //create board, a matrix with all the divs
-let board = new Board(width, height, div);
+let board = new Board(width, height, div, cliked);
 
-//board.populate(0.05, treeColor);
-
-btnReload.addEventListener('click', function(){
-    let treesNumber = Math.floor(Math.random()*13)+2;
-    plant(treesNumber, treeColor);
+btnClean.addEventListener('click', function(){
+    board.clean();
+    showTotalTrees();
+});
+btnSave.addEventListener('click', function(){
+    let data = {
+        name: inputName.value,
+        field: board.planted
+    }
+    ref.push(data);
+    inputName.value = "";
 });
 
-treesCount.innerHTML = "Total trees: " + board.population;
-
-
-
-/*
-let count = document.createElement('p');
-count.innerHTML = "Total trees: " + board.population;
-count.style.backgroundColor = '#A87C4F';
-count.style.padding = '1em';
-count.style.borderRadius = '10%';
-document.getElementById("container").appendChild(count);
-*/

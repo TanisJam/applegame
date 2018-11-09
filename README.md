@@ -9,6 +9,7 @@ Link: https://tanisweb.000webhostapp.com
 
 Things to do:
 - [x] Generating field.
-- [x] Generating apples tress :deciduous_tree: randomly.
+- [x] Plant apples tress:deciduous_tree: by cliking on the field.
+- [x] Remove apples tress:deciduous_tree: by cliking them.
 - [ ] Making trees produce delicious apples :apple:.
 - [ ] Add some interface where you can sell apples and buy trees.

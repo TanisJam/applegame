@@ -1,21 +1,25 @@
 class Board{
     //inicialice board
-    constructor(width, height, element){
+    constructor(width, height, element, func){
         this.width = width;
         this.height = height;
         this.population = 0;
-        this.field = this.createField(element);            
+        this.onclik = func;
+        this.field = this.createField(element);  
+        this.planted = [];          
     }
     createField(element){
         let field = [];
         let index = 1;
+
         for (let x = 0; x < this.height; x++) {
             let row = document.createElement('div');
             //row.id = "row-" + (x + 1);
 
             for (let y = 0; y < this.width; y++) {
                 let col = document.createElement('div');
-                col.id = "cell-" + index++;
+                col.id = index++;
+                col.addEventListener("click", this.onclik);
                 row.appendChild(col);
             }
             element.appendChild(row);
@@ -26,44 +30,44 @@ class Board{
         return field;
     }
 
-    populate(probability, treeColor){
-        //probability 0.0 - 1.0
-        for (let x = 0; x < this.field.length; x++) {
-            for (let y = 0; y < this.field[x].length; y++) {
-                if (Math.random() > 1-probability) {
-                    this.population++;
-                    //board[x][y].style.background = '#da1e1e';
-                    //board[x][y].style.borderRadius = '50%';
-    
-                    //Create Tree icon
-                    let icon = document.createElement('i');
-                    icon.classList.add("fas");
-                    icon.classList.add("fa-tree");
-                    icon.style.color = treeColor;
-                    this.field[x][y].appendChild(icon);
-                    //console.log(this.field[x][y]);
-                }
-            }
-        }
-    }
-
-    plant(number, color){
-        let place = document.getElementById("cell-"+number);
-        if(place){
+    plant(number, color = '#75972C'){
+        let place = document.getElementById(number);
+        console.log();
+        if(place && !place.hasChildNodes()){
             let icon = document.createElement('i');
             icon.classList.add("fas");
             icon.classList.add("fa-tree");
             icon.style.color = color;
             place.appendChild(icon);
-            this.population++;
+            this.planted.push(number);
+        }else{
+            if(place && place.hasChildNodes()){
+                place.removeChild(place.firstChild);
+                let index = this.planted.indexOf(number);
+                this.planted.splice(index, 1);
+            }
         }
+        this.popUpdate();
     }
-    clean(number){
-        let place = document.getElementById("cell-"+number);
-        if(place){            
-            place.removeChild(place.firstChild);
-            this.population--;
+    clean(){
+        for(let i = 1; i <= this.width * this.height; i++){
+            let element = document.getElementById(i);
+            if(element.hasChildNodes()){            
+                element.removeChild(element.firstChild);
+            }
         }
+        this.planted = [];
+        this.popUpdate();
     }
 
+    popUpdate(){
+        let pop = 0;
+        for(let i = 1; i <= this.width * this.height; i++){
+            let element = document.getElementById(i);
+            if(element.hasChildNodes()){            
+                pop++;
+            }
+        }
+        this.population = pop;
+    }
 }
