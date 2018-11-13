@@ -1,13 +1,19 @@
 html{
     margin: 0;
     padding: 0;
-    
+    width: 100%;
     font-family: sans-serif;
 }
 body{
     background-color: antiquewhite;
     width: 100%;
     margin: 0;
+    display: flex;
+}
+#content{
+    margin: auto;
+    align-items: center;
+    justify-content: center;
 }
 #container{
     width: 100%;
@@ -65,4 +71,13 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+#buttons * {
+    margin: 0em 0.5em;
+    border-radius: 15%;
+    padding: 0.4em 1em;
+    border: none;
+    background-color: #CC0000;
+    box-shadow: 0.1px 0.1px 10px 1px rgb(129, 1, 1) inset;
 }

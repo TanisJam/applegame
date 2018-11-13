@@ -11,5 +11,5 @@ Things to do:
 - [x] Generating field.
 - [x] Plant apples tress:deciduous_tree: by cliking on the field.
 - [x] Remove apples tress:deciduous_tree: by cliking them.
-- [ ] Making trees produce delicious apples :apple:.
-- [ ] Add some interface where you can sell apples and buy trees.
+- [x] Making trees grow or die with game of life rules.
+- [ ] Add some interface with options.

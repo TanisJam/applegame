@@ -14,7 +14,6 @@ class Board{
 
         for (let x = 0; x < this.height; x++) {
             let row = document.createElement('div');
-            //row.id = "row-" + (x + 1);
 
             for (let y = 0; y < this.width; y++) {
                 let col = document.createElement('div');
