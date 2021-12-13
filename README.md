@@ -5,7 +5,7 @@ Like a game of life, but whit apple trees.
 
 ![Screenshot](screenshot.png)
 
-Link: https://tanisweb.000webhostapp.com
+Link: https://applegame-swart.vercel.app/
 
 Things to do:
 - [x] Generating field.
